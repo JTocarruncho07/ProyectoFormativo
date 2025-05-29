@@ -1,0 +1,13 @@
+{
+    "name": "jtoca/recover-password",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Juan Pablo Tocarruncho López",
+            "email": "jtocarruncho07@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
