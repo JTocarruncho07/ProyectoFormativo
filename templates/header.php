@@ -1,15 +1,25 @@
+<?php
+if (!defined('ROOT_PATH')) {
+    require_once dirname(__DIR__) . '/config/paths.php';
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recebera Alto Blanco</title>
+    <link rel="icon" type="image/png" href="../../assets/img/logo.png">
     <!-- Incluir Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?php echo assetUrl('css/style.css'); ?>">
     <!-- Agregar FontAwesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
         .navbar-brand {
             font-weight: bold;
         }
@@ -24,8 +34,10 @@
 <body>
 <?php if(isset($_SESSION['usuario'])): ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-        <div class="container">
-        <a class="navbar-brand" href="https://maps.app.goo.gl/6ks1t5D11q24sQsu5" target="_blank">Recebera Alto Blanco</a>
+        <div class="container-fluid">
+        <a class="navbar-brand" href="https://maps.app.goo.gl/6ks1t5D11q24sQsu5" target="_blank">
+            <img src="../../assets/img/logo.png" alt="Recebera Alto Blanco" height="80">
+        </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,8 +50,8 @@
                             <i class="fas fa-truck"></i> Máquinas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="maquinasDropdown">
-                            <a class="dropdown-item" href="control_maquinas.php">Control de Máquinas</a>
-                            <a class="dropdown-item" href="gastos_maquinas.php">Gastos de Máquinas</a>
+                            <a class="dropdown-item" href="<?php echo moduleUrl('machines/control_maquinas.php'); ?>">Control de Máquinas</a>
+                            <a class="dropdown-item" href="<?php echo moduleUrl('machines/gastos_maquinas.php'); ?>">Gastos de Máquinas</a>
                         </div>
                     </li>
                     
@@ -49,8 +61,8 @@
                             <i class="fas fa-dollar-sign"></i> Finanzas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="finanzasDropdown">
-                            <a class="dropdown-item" href="nueva_venta.php">Nueva Venta</a>
-                            <a class="dropdown-item" href="nuevo_gasto.php">Nuevo Gasto</a>
+                            <a class="dropdown-item" href="<?php echo moduleUrl('finances/nueva_venta.php'); ?>">Nueva Venta</a>
+                            <a class="dropdown-item" href="<?php echo moduleUrl('finances/nuevo_gasto.php'); ?>">Nuevo Gasto</a>
                         </div>
                     </li>
                     
@@ -60,14 +72,15 @@
                             <i class="fas fa-chart-bar"></i> Reportes
                         </a>
                         <div class="dropdown-menu" aria-labelledby="reportesDropdown">
-                            <a class="dropdown-item" href="reporte.php">Reporte Mensual</a>
-                            <a class="dropdown-item" href="reporte_anual.php">Reporte Anual</a>
+                            <a class="dropdown-item" href="<?php echo moduleUrl('reports/reporte_diario.php'); ?>">Reporte Diario</a>
+                            <a class="dropdown-item" href="<?php echo moduleUrl('reports/reporte.php'); ?>">Reporte Mensual</a>
+                            <a class="dropdown-item" href="<?php echo moduleUrl('reports/reporte_anual.php'); ?>">Reporte Anual</a>
                         </div>
                     </li>
 
                     <!-- Empleados -->
                     <li class="nav-item">
-                        <a class="nav-link" href="empleados.php">
+                        <a class="nav-link" href="<?php echo moduleUrl('employees/empleados.php'); ?>">
                             <i class="fas fa-users"></i> Empleados
                         </a>
                     </li>
@@ -84,7 +97,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="logout.php">Cerrar Sesión</a>
+                            <a class="dropdown-item" href="<?php echo moduleUrl('auth/logout.php'); ?>">Cerrar Sesión</a>
                         </div>
                     </li>
                 </ul>
@@ -92,5 +105,6 @@
         </div>
     </nav>
 <?php endif; ?>
-</body>
-</html>
+
+<!-- Contenido principal -->
+<div class="main-content">
