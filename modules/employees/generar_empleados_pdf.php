@@ -58,35 +58,35 @@ $pdf->SetTextColor(255, 255, 255);
 
 // Definir anchos de columnas para formato horizontal (ocupando todo el ancho)
 // Ancho total disponible: 277mm (A4 horizontal - márgenes)
-$w = array(32, 32, 30, 25, 18, 28, 30, 25, 27);
+$w = array(35, 35, 32, 28, 20, 30, 30, 26, 30);
 
-$pdf->Cell($w[0], 8, 'Nombre', 1, 0, 'C', true);
-$pdf->Cell($w[1], 8, 'Apellido', 1, 0, 'C', true);
-$pdf->Cell($w[2], 8, 'Documento', 1, 0, 'C', true);
-$pdf->Cell($w[3], 8, 'Teléfono', 1, 0, 'C', true);
-$pdf->Cell($w[4], 8, 'Tipo Sangre', 1, 0, 'C', true);
-$pdf->Cell($w[5], 8, 'Fecha Inicio', 1, 0, 'C', true);
-$pdf->Cell($w[6], 8, 'Fecha Nacimiento', 1, 0, 'C', true);
-$pdf->Cell($w[7], 8, 'Sueldo', 1, 0, 'C', true);
-$pdf->Cell($w[8], 8, 'Estado Pago', 1, 1, 'C', true);
+$pdf->Cell($w[0], 9, 'Nombre', 1, 0, 'C', true);
+$pdf->Cell($w[1], 9, 'Apellido', 1, 0, 'C', true);
+$pdf->Cell($w[2], 9, 'Documento', 1, 0, 'C', true);
+$pdf->Cell($w[3], 9, 'Teléfono', 1, 0, 'C', true);
+$pdf->Cell($w[4], 9, 'Tipo Sangre', 1, 0, 'C', true);
+$pdf->Cell($w[5], 9, 'Fecha Inicio', 1, 0, 'C', true);
+$pdf->Cell($w[6], 9, 'Fecha Nacimiento', 1, 0, 'C', true);
+$pdf->Cell($w[7], 9, 'Sueldo', 1, 0, 'C', true);
+$pdf->Cell($w[8], 9, 'Estado Pago', 1, 1, 'C', true);
 
 // Datos de empleados
-$pdf->SetFont('helvetica', '', 8);
+$pdf->SetFont('helvetica', '', 9);
 $pdf->SetTextColor(0, 0, 0);
 $fill = false;
 
 foreach ($empleados as $empleado) {
     $pdf->SetFillColor($fill ? 245 : 255, $fill ? 245 : 255, $fill ? 245 : 255);
     
-    $pdf->Cell($w[0], 6, $empleado['nombre'], 1, 0, 'L', $fill);
-    $pdf->Cell($w[1], 6, $empleado['apellido'], 1, 0, 'L', $fill);
-    $pdf->Cell($w[2], 6, $empleado['documento'], 1, 0, 'C', $fill);
-    $pdf->Cell($w[3], 6, $empleado['telefono'], 1, 0, 'C', $fill);
-    $pdf->Cell($w[4], 6, $empleado['tipo_sangre'] ?? 'N/A', 1, 0, 'C', $fill);
-    $pdf->Cell($w[5], 6, isset($empleado['fecha_inicio']) ? date('d/m/Y', strtotime($empleado['fecha_inicio'])) : 'N/A', 1, 0, 'C', $fill);
-    $pdf->Cell($w[6], 6, isset($empleado['fecha_nacimiento']) ? date('d/m/Y', strtotime($empleado['fecha_nacimiento'])) : 'N/A', 1, 0, 'C', $fill);
-    $pdf->Cell($w[7], 6, '$' . number_format($empleado['sueldo'], 2), 1, 0, 'R', $fill);
-    $pdf->Cell($w[8], 6, (isset($empleado['pago_quincena']) && $empleado['pago_quincena'] == 1) ? 'Realizado' : 'Pendiente', 1, 1, 'C', $fill);
+    $pdf->Cell($w[0], 7, $empleado['nombre'], 1, 0, 'L', $fill);
+    $pdf->Cell($w[1], 7, $empleado['apellido'], 1, 0, 'L', $fill);
+    $pdf->Cell($w[2], 7, $empleado['documento'], 1, 0, 'C', $fill);
+    $pdf->Cell($w[3], 7, $empleado['telefono'], 1, 0, 'C', $fill);
+    $pdf->Cell($w[4], 7, $empleado['tipo_sangre'] ?? 'N/A', 1, 0, 'C', $fill);
+    $pdf->Cell($w[5], 7, isset($empleado['fecha_inicio']) ? date('d/m/Y', strtotime($empleado['fecha_inicio'])) : 'N/A', 1, 0, 'C', $fill);
+    $pdf->Cell($w[6], 7, isset($empleado['fecha_nacimiento']) ? date('d/m/Y', strtotime($empleado['fecha_nacimiento'])) : 'N/A', 1, 0, 'C', $fill);
+    $pdf->Cell($w[7], 7, '$' . number_format($empleado['sueldo'], 2), 1, 0, 'R', $fill);
+    $pdf->Cell($w[8], 7, (isset($empleado['pago_quincena']) && $empleado['pago_quincena'] == 1) ? 'Realizado' : 'Pendiente', 1, 1, 'C', $fill);
     
     $fill = !$fill;
 }
